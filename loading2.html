@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Buscando Log...</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Courier+Prime&display=swap');
+        
+        body {
+            background-color: #0d0d0d;
+            color: #00ff41;
+            font-family: 'Courier Prime', monospace;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            text-shadow: 0 0 5px #00ff41;
+        }
+        
+        .loading-console {
+            width: 90%;
+            max-width: 600px;
+            text-align: left;
+        }
+
+        .loading-console p { margin: 5px 0; font-size: 1em; }
+
+        .cursor {
+            display: inline-block;
+            width: 10px;
+            height: 1.2em;
+            background-color: #00ff41;
+            animation: blink 1s step-end infinite;
+            box-shadow: 0 0 5px #00ff41;
+            vertical-align: middle;
+        }
+
+        @keyframes blink {
+            from, to { background-color: transparent; box-shadow: none; }
+            50% { background-color: #00ff41; box-shadow: 0 0 5px #00ff41; }
+        }
+
+        @media (max-width: 600px) { .loading-console p { font-size: 0.8em; } }
+    </style>
+</head>
+<body>
+
+    <div class="loading-console" id="console">
+        <!-- As mensagens de loading para a transição 1->2 aparecerão aqui -->
+    </div>
+
+    <script>
+        const consoleElement = document.getElementById('console');
+        // Mensagens novas e temáticas para a transição
+        const messages = [
+            "Analisando resposta do LOG: 001... [ISCA CONFIRMADA]",
+            "Ignorando pista falsa...",
+            "Buscando por fragmentos de dados ocultos...",
+            "Trilha encontrada. O próximo log está corrompido.",
+            "Tentando forçar o acesso...",
+            "Conexão instável. Carregando LOG: 002..."
+        ];
+
+        let messageIndex = 0;
+
+        function showNextMessage() {
+            if (messageIndex < messages.length) {
+                const p = document.createElement('p');
+                p.innerHTML = messages[messageIndex] + ' <span class="cursor"></span>';
+                
+                const previousLine = consoleElement.querySelector('p:last-child');
+                if (previousLine) {
+                    previousLine.innerHTML = previousLine.textContent;
+                }
+                
+                consoleElement.appendChild(p);
+                messageIndex++;
+                setTimeout(showNextMessage, Math.random() * 800 + 400);
+            } else {
+                // Ao final, redireciona para o NÍVEL 2
+                setTimeout(() => {
+                    window.location.href = 'nivel2.html'; 
+                }, 1500);
+            }
+        }
+
+        showNextMessage();
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ECHO-LOG: 002 - CONEXÃO PERDIDA</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Courier+Prime&display=swap');
+        ::selection{background-color:#00ff41;color:#0d0d0d;text-shadow:none}body{background-color:#0d0d0d;color:#00ff41;font-family:'Courier Prime',monospace;font-size:16px;line-height:1.6;margin:0;padding:20px;text-shadow:0 0 5px #00ff41,0 0 10px #00ff41;box-sizing:border-box}.container{max-width:800px;margin:0 auto;border:1px solid #00ff41;padding:25px;box-shadow:0 0 15px rgba(0,255,65,.3)}strong{color:#fff;text-shadow:none}.error-box{border:1px dashed red;background-color:#111;padding:20px;margin-top:20px;color:#ccc;text-shadow:none}.error-box h2{color:red;text-shadow:0 0 5px red;text-align:center}.hidden-text{color:#0d0d0d;user-select:all}.enigma-section{margin-top:30px;text-align:center}#answer-input{background-color:transparent;border:1px solid #00ff41;color:#00ff41;padding:10px;width:250px;font-family:'Courier Prime',monospace;text-align:center;box-sizing:border-box}#answer-input:focus{outline:0;box-shadow:0 0 10px #00ff41}button{background-color:#00ff41;color:#0d0d0d;border:none;padding:10px 20px;font-family:'Courier Prime',monospace;font-weight:700;cursor:pointer;margin-left:10px;transition:all .2s;box-sizing:border-box}button:hover{background-color:#fff;box-shadow:0 0 15px #fff}#feedback{margin-top:15px;height:20px;font-weight:700}.feedback-error{color:red;text-shadow:0 0 5px red}.feedback-success{color:#00ff41}@media (max-width:600px){body{font-size:14px;padding:10px}.container{padding:15px}#answer-input{display:block;width:100%;margin:0 auto 15px}button{display:block;width:100%;margin:0 auto}}
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>ECHO-LOG: 002 - A FALHA NO SISTEMA</h1>
+        <p>Você achou que seria fácil? <strong>Silencer</strong> era a isca perfeita, e você a mordeu. O Oráculo sabia que o caminho lógico levaria a ela. Era um beco sem saída.</p>
+        <p>Tentei acessar o próximo log de dados, mas a trilha ficou fria. O sistema está corrompido, o servidor não responde. A conexão falhou. Mas a pista original dele ainda ecoa...</p>
+        <p><em>"A verdade não está na luz que todos veem..."</em></p>
+        <p>A luz aqui é o texto que você consegue ler. A verdade está no que não pode ser visto. O próprio glitch pode ser a mensagem. Interaja com a falha.</p>
+        <div class="error-box">
+            <h2>ERROR 503: SERVICE UNAVAILABLE</h2>
+            <p>> O servidor em <strong>7z3x5t9y[...]b2q.onion</strong> não pôde ser encontrado.</p>
+            <p>> Verifique a sua conexão de rede.</p>
+            <p>> O site pode estar temporariamente fora do ar ou <span class="hidden-text">MORPHEUS</span> pode ter sido movido permanentemente para um novo endereço.</p>
+            <p>> Se o problema persistir, o sistema pode estar sob ataque.</p>
+            <p>> [TENTANDO RECONECTAR...]</p>
+        </div>
+        <div class="enigma-section">
+            <label for="answer-input">QUAL É A MENSAGEM OCULTA NA FALHA?</label><br><br>
+            <input type="text" id="answer-input" placeholder="DECODIFIQUE O GLITCH..." autocomplete="off">
+            <button onclick="checkAnswer()">VERIFICAR</button>
+            <p id="feedback"></p>
+        </div>
+    </div>
+
+    <script>
+        function checkAnswer() {
+            const correctAnswer = "morpheus";
+            const userInput = document.getElementById('answer-input').value.trim().toLowerCase();
+            const feedbackElement = document.getElementById('feedback');
+
+            if (userInput === correctAnswer) {
+                feedbackElement.textContent = "[FALHA IGNORADA] Mensagem decodificada. Rastreando prova final...";
+                feedbackElement.className = 'feedback-success';
+                
+                setTimeout(() => {
+                    // Agora redireciona para a nova página de loading do nível 3
+                    window.location.href = 'loading3.html'; 
+                }, 2000);
+                // ------------------------------------
+
+            } else {
+                feedbackElement.textContent = "[NENHUM DADO ENCONCONTRADO] O sistema permanece corrompido.";
+                feedbackElement.className = 'feedback-error';
+                
+                setTimeout(() => {
+                    feedbackElement.textContent = "";
+                    feedbackElement.className = '';
+                }, 3000);
+            }
+        }
+        
+        document.getElementById('answer-input').addEventListener('keyup', function(event) {
+            if (event.key === 'Enter') {
+                event.preventDefault();
+                checkAnswer();
+            }
+        });
+    </script>
+
+</body>
+</html>

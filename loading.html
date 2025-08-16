@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Conectando...</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Courier+Prime&display=swap');
+        
+        body {
+            background-color: #0d0d0d;
+            color: #00ff41;
+            font-family: 'Courier Prime', monospace;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            text-shadow: 0 0 5px #00ff41;
+        }
+        
+        .loading-console {
+            width: 600px;
+            text-align: left;
+        }
+
+        .loading-console p {
+            margin: 5px 0;
+        }
+
+        /* Efeito de cursor piscando */
+        .cursor {
+            display: inline-block;
+            width: 10px;
+            height: 1.2em;
+            background-color: #00ff41;
+            animation: blink 1s step-end infinite;
+            box-shadow: 0 0 5px #00ff41;
+        }
+
+        @keyframes blink {
+            from, to { background-color: transparent; box-shadow: none; }
+            50% { background-color: #00ff41; box-shadow: 0 0 5px #00ff41; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="loading-console" id="console">
+        <!-- As mensagens de loading aparecerão aqui via JavaScript -->
+    </div>
+
+    <script>
+        const consoleElement = document.getElementById('console');
+        const messages = [
+            "Iniciando conexão segura...",
+            "Verificando chave de acesso... [OK]",
+            "Criptografando pacotes de dados...",
+            "Saltando entre nós da rede... [3/3]",
+            "Buscando servidor ECHO-LOG...",
+            "Conexão estabelecida.",
+            "Acesso ao LOG: 001 concedido. Carregando..."
+        ];
+
+        let messageIndex = 0;
+
+        function showNextMessage() {
+            if (messageIndex < messages.length) {
+                const p = document.createElement('p');
+                p.innerHTML = messages[messageIndex] + ' <span class="cursor"></span>';
+                
+                // Remove o cursor da linha anterior
+                const previousLine = consoleElement.querySelector('p:last-child');
+                if (previousLine) {
+                    previousLine.innerHTML = previousLine.textContent;
+                }
+                
+                consoleElement.appendChild(p);
+                messageIndex++;
+                setTimeout(showNextMessage, Math.random() * 800 + 400); // Intervalo aleatório
+            } else {
+                // Quando todas as mensagens forem exibidas, redireciona para o nível 1
+                setTimeout(() => {
+                    window.location.href = 'nivel1.html';
+                }, 1500); // Espera 1.5s antes de redirecionar
+            }
+        }
+
+        showNextMessage();
+    </script>
+
+</body>
+</html>

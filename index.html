@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Autenticação de Nó</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Courier+Prime&display=swap');
+        
+        body {
+            background-color: #0d0d0d;
+            color: #00ff41;
+            font-family: 'Courier Prime', monospace;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            padding: 15px; /* Adicionado para evitar que o container cole nas bordas */
+            box-sizing: border-box; /* Garante que o padding não cause overflow */
+            text-shadow: 0 0 5px #00ff41;
+        }
+
+        .login-container {
+            width: 100%; /* Ocupa a largura disponível */
+            max-width: 450px; /* Mas não passa de 450px em telas grandes */
+            border: 1px solid #00ff41;
+            padding: 40px;
+            text-align: center;
+            box-shadow: 0 0 15px rgba(0, 255, 65, 0.3);
+            box-sizing: border-box;
+        }
+
+        h1 {
+            margin-bottom: 15px;
+            font-size: 1.8em;
+        }
+
+        .hint {
+            font-style: italic;
+            color: #ccc;
+            margin-bottom: 30px;
+            text-shadow: none;
+        }
+
+        #password-input {
+            background-color: transparent;
+            border: 1px solid #00ff41;
+            color: #00ff41;
+            padding: 10px;
+            width: 90%;
+            font-family: 'Courier Prime', monospace;
+            text-align: center;
+            font-size: 1.2em;
+            text-transform: uppercase;
+            box-sizing: border-box;
+        }
+
+        button {
+            background-color: #00ff41;
+            color: #0d0d0d;
+            border: none;
+            padding: 10px 20px;
+            font-family: 'Courier Prime', monospace;
+            font-weight: bold;
+            cursor: pointer;
+            margin-top: 20px;
+            width: 90%;
+            transition: all 0.2s;
+            box-sizing: border-box;
+        }
+
+        button:hover {
+            background-color: #ffffff;
+        }
+        
+        #feedback {
+            margin-top: 15px;
+            height: 20px;
+            font-weight: bold;
+            color: #ff0000;
+            text-shadow: 0 0 5px #ff0000;
+        }
+
+        /* --- ESTILOS PARA RESPONSIVIDADE --- */
+        /* Para telas com largura máxima de 600px (celulares em modo retrato) */
+        @media (max-width: 600px) {
+            .login-container {
+                padding: 25px; /* Diminui o espaçamento interno */
+            }
+
+            h1 {
+                font-size: 1.5em; /* Diminui um pouco o título */
+            }
+            
+            .hint {
+                font-size: 0.9em; /* Diminui a fonte da dica */
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <h1>[TERMINAL SEGURO]</h1>
+        <p class="hint">"Para entrar, use a chave que o Oráculo nos ensinou: a verdade é sempre o oposto do que parece."</p>
+        
+        <input type="text" id="password-input" placeholder="CHAVE DE ACESSO" autocomplete="off">
+        <button onclick="checkPassword()">AUTENTICAR</button>
+        <p id="feedback"></p>
+    </div>
+
+    <script>
+        // O JavaScript continua o mesmo
+        function checkPassword() {
+            const correctPassword = "EVIWZW";
+            const userInput = document.getElementById('password-input').value.trim().toUpperCase();
+            const feedbackElement = document.getElementById('feedback');
+            if (userInput === correctPassword) {
+                window.location.href = 'loading.html';
+            } else {
+                feedbackElement.textContent = "CONEXÃO RECUSADA. TENTATIVA REGISTRADA.";
+                document.getElementById('password-input').value = '';
+            }
+        }
+        document.getElementById('password-input').addEventListener('keyup', function(event) {
+            if (event.key === 'Enter') {
+                event.preventDefault();
+                checkPassword();
+            }
+        });
+    </script>
+</body>
+</html>
