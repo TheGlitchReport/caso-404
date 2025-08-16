@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CASO 404: TERMINAL DE CONTENÇÃO</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Courier+Prime&display=swap');
+
+        body {
+            background-color: #0d0d0d;
+            color: #00ff41;
+            font-family: 'Courier Prime', monospace;
+            font-size: 18px;
+            line-height: 1.7;
+            margin: 0;
+            padding: 25px;
+            text-shadow: 0 0 5px #00ff41, 0 0 10px #00ff41;
+            box-sizing: border-box;
+            /* Efeito de scanlines de monitor antigo */
+            background-image: linear-gradient(rgba(0,0,0,0.3) 50%, transparent 50%);
+            background-size: 100% 4px;
+        }
+
+        .terminal-container {
+            max-width: 900px;
+            margin: 0 auto;
+            border: 2px solid #00ff41;
+            padding: 20px 30px;
+            box-shadow: 0 0 20px rgba(0, 255, 65, 0.4), inset 0 0 15px rgba(0, 255, 65, 0.3);
+            background-color: rgba(0, 26, 5, 0.4); /* Fundo sutil para o terminal */
+        }
+
+        h1, h2 {
+            text-align: center;
+            text-transform: uppercase;
+            margin-bottom: 25px;
+        }
+
+        h2 {
+            border-top: 1px dashed #00ff41;
+            border-bottom: 1px dashed #00ff41;
+            padding: 10px 0;
+            margin-top: 40px;
+            font-size: 1.1em;
+        }
+
+        p {
+            margin: 10px 0;
+        }
+
+        .code-block {
+            background-color: #000;
+            padding: 15px;
+            border-left: 3px solid #00ff41;
+            white-space: pre-wrap; /* Mantém a formatação do texto */
+            font-size: 0.9em;
+        }
+
+        .enigma-section {
+            margin-top: 20px;
+        }
+
+        .enigma-section h3 {
+            color: #ffffff;
+            text-shadow: none;
+            text-decoration: underline;
+        }
+
+        ul {
+            list-style-type: none;
+            padding-left: 10px;
+        }
+
+        li {
+            margin-bottom: 10px;
+        }
+        
+        strong {
+            color: #ffffff;
+            text-shadow: none;
+        }
+
+        code {
+            background-color: #000;
+            padding: 2px 5px;
+            font-weight: bold;
+        }
+
+        .cursor {
+            display: inline-block;
+            width: 12px;
+            height: 1.2em;
+            background-color: #00ff41;
+            animation: blink 1s step-end infinite;
+            box-shadow: 0 0 5px #00ff41;
+            vertical-align: text-bottom;
+        }
+
+        @keyframes blink {
+            from, to { background-color: transparent; box-shadow: none; }
+            50% { background-color: #00ff41; box-shadow: 0 0 5px #00ff41; }
+        }
+        
+        @media (max-width: 768px) {
+            body { font-size: 16px; padding: 15px; }
+            .terminal-container { padding: 15px 20px; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="terminal-container">
+        <h1>// PROTOCOLO DE CONTENÇÃO ATIVADO //</h1>
+
+        <h2>Status do Sistema</h2>
+        <div class="code-block">
+&gt; CONEXÃO EXTERNA... BLOQUEADA
+&gt; PROTOCOLOS DE SAÍDA... CORROMPIDOS
+&gt; ACESSO RESTRITO AO TERMINAL LOCAL
+        </div>
+
+        <h2>Objetivo Imediato</h2>
+        <p>Recompilar a rota de saída resolvendo o enigma abaixo. O endereço do dossiê é a sua única chave.</p>
+
+        <h2>[ROTA DE SAÍDA CORROMPIDA - RECOMPILAÇÃO NECESSÁRIA]</h2>
+        <div class="enigma-section">
+            <p>&gt; O endereço do dossiê foi estilhaçado. A rota foi dividida em quatro fragmentos de dados criptografados. A ordem de montagem foi perdida.</p>
+            <p>&gt; As Chaves de Sequência abaixo determinam a ordem correta (1, 2, 3, 4). Resolva as chaves para saber como recompilar a rota.</p>
+            <p>&gt; O resultado final é um código que exige um último passo de decodificação para se tornar legível.</p>
+
+            <h3>Fragmentos de Dados:</h3>
+            <ul>
+                <li><strong>[§]</strong> <code>L2Nhc28t</code></li>
+                <li><strong>[¥]</strong> <code>aHR0cHM6Ly90aGVnbGl0Y2hyZXBvcnQ=</code></li>
+                <li><strong>[Ø]</strong> <code>NDA0</code></li>
+                <li><strong>[ß]</strong> <code>uZ2l0aHViLmlv</code></li>
+            </ul>
+
+            <h3>Chaves de Sequência:</h3>
+            <ul>
+                <li><strong>Chave [§]:</strong> "Eu sou o número original do caso do Oráculo."</li>
+                <li><strong>Chave [¥]:</strong> "Eu sou o começo de tudo. O número original do caso do Oráculo, menos dois."</li>
+                <li><strong>Chave [Ø]:</strong> "Eu sou o código de erro que agora dá nome a este caso, com os zeros removidos."</li>
+                <li><strong>Chave [ß]:</strong> "Eu sou o dobro do começo."</li>
+            </ul>
+        </div>
+        
+        <p style="text-align: center; margin-top: 40px;">> AGUARDANDO RECOMPILAÇÃO...<span class="cursor"></span></p>
+
+    </div>
+
+</body>
+</html>
