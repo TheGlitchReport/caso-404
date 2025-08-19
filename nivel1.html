@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ECHO-LOG: 001</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Courier+Prime&display=swap');
+        body{background-color:#0d0d0d;color:#00ff41;font-family:'Courier Prime',monospace;font-size:16px;line-height:1.6;margin:0;padding:20px;text-shadow:0 0 5px #00ff41,0 0 10px #00ff41;box-sizing:border-box}.container{max-width:800px;margin:0 auto;border:1px solid #00ff41;padding:25px;box-shadow:0 0 15px rgba(0,255,65,.3)}.system-log{color:#888;font-style:italic;margin-bottom:20px}h1,h2{text-align:center;margin-bottom:20px}h2{border-top:1px dashed #00ff41;border-bottom:1px dashed #00ff41;padding:10px 0}ul{list-style-type:none;padding:0}li{margin-bottom:15px}strong{color:#fff;text-shadow:none}.clue-box{background-color:#001a05;border:1px solid #00ff41;padding:15px;margin:20px 0;text-align:center;font-weight:700;font-style:italic}.enigma-section{margin-top:30px;text-align:center}#answer-input{background-color:transparent;border:1px solid #00ff41;color:#00ff41;padding:10px;width:250px;font-family:'Courier Prime',monospace;text-align:center;box-sizing:border-box}#answer-input:focus{outline:0;box-shadow:0 0 10px #00ff41}button{background-color:#00ff41;color:#0d0d0d;border:none;padding:10px 20px;font-family:'Courier Prime',monospace;font-weight:700;cursor:pointer;margin-left:10px;transition:all .2s;box-sizing:border-box}button:hover{background-color:#fff;box-shadow:0 0 15px #fff}#feedback{margin-top:15px;height:20px;font-weight:700}.feedback-error{color:red;text-shadow:0 0 5px red}.feedback-success{color:#00ff41}@media (max-width:600px){body{font-size:14px;padding:10px}.container{padding:15px}h1{font-size:1.6em}h2{font-size:1.2em}#answer-input{display:block;width:100%;margin:0 auto 15px}button{display:block;width:100%;margin:0 auto}}
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>ECHO-LOG: 001 - A MORTE DO ORÁCULO</h1>
+        <p>Se você está lendo isso, você não nos encontrou por acaso. Você cavou fundo, além da superfície barulhenta e vigiada da <em>clearnet</em>. Bem-vindo ao abismo. Bem-vindo ao único lugar onde a verdade ainda respira.</p>
+        <p>Meu nome não importa. Me chame de <strong>Void</strong>. Eu sou o zelador deste espaço, um arquivista do que eles tentam apagar. E hoje, eu arquivo um assassinato.</p>
+        <p>Eles o chamavam de <strong>"Oráculo"</strong>. Ele expôs corporações, políticos e agências. Ele era o glitch no sistema perfeito deles. E agora, ele está morto. A notícia oficial fala de "acidente elétrico". Balela. Foi sabotagem. O assassinato foi limpo, profissional e, acima de tudo, uma mensagem: <strong>"Ninguém está seguro"</strong>.</p>
+        <p>O círculo do Oráculo era pequeno. O assassino é um dos três nomes abaixo.</p>
+        <h2>OS SUSPEITOS</h2>
+        <ul>
+            <li><strong>1. Zero-Day:</strong> O Rival. Um hacker mercenário que acredita que informação é uma arma para quem paga mais. Ele e o Oráculo travaram uma guerra digital feroz. Motivo: Eliminar a concorrência e tomar para si os segredos do Oráculo.</li>
+            <li><strong>2. Silencer:</strong> A Executora. Chefe de "segurança" da OmniCorp, um dos conglomerados que o Oráculo estava prestes a expor. Conhecida por fazer problemas desaparecerem. Motivo: Proteger sua corporação, silenciando a ameaça.</li>
+            <li><strong>3. Morpheus:</strong> O Discípulo Renegado. Ex-protegido do Oráculo, acreditava que a anarquia causada por seu mestre era pior que a mentira controlada. O Oráculo o chamou de traidor. Motivo: Parar seu antigo mentor antes que ele causasse um caos irreversível.</li>
+        </ul>
+        <h2>A PISTA</h2>
+        <div class="clue-box">
+            "A verdade não está na luz que todos veem, mas na sombra que a chave projeta."
+        </div>
+        <div class="enigma-section">
+            <label for="answer-input">QUEM É O ASSASSINO?</label><br><br>
+            <input type="text" id="answer-input" placeholder="DIGITE UM NOME..." autocomplete="off">
+            <button onclick="checkAnswer()">VERIFICAR</button>
+            <p id="feedback"></p>
+        </div>
+    </div>
+
+<script>
+    function checkAnswer() {
+        const encodedAnswer = "c2lsZW5jZXI=";
+        const userInput = document.getElementById('answer-input').value.trim().toLowerCase();
+        const feedbackElement = document.getElementById('feedback');
+
+        // Usamos a função atob() do JavaScript para DECODIFICAR a resposta antes de comparar.
+        if (userInput === atob(encodedAnswer)) {
+            feedbackElement.textContent = "[ACESSO CONCEDIDO] Rastreando próximo log...";
+            feedbackElement.className = 'feedback-success';
+            
+            setTimeout(() => {
+                window.location.href = 'loading2.html'; 
+            }, 2000);
+
+        } else {
+            feedbackElement.textContent = "[ACESSO NEGADO] Tentativa registrada no sistema.";
+            feedbackElement.className = 'feedback-error';
+            setTimeout(() => {
+                feedbackElement.textContent = "";
+                feedbackElement.className = '';
+            }, 3000);
+        }
+    }
+    
+    document.getElementById('answer-input').addEventListener('keyup', function(event) {
+        if (event.key === 'Enter') {
+            event.preventDefault();
+            checkAnswer();
+        }
+    });
+</script>
+
+</body>
+</html>
